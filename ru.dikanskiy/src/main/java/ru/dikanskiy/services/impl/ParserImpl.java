@@ -46,6 +46,9 @@ public class ParserImpl implements Parser {
                 } else {
                     stack.push(config.getOperatorByToken(token));
                 }
+            } else {
+                clear();
+                throw new UnsupportedOperationException(String.format("%s is not supported", token));
             }
         }
         while (!queue.isEmpty()) {
@@ -61,5 +64,10 @@ public class ParserImpl implements Parser {
     @Override
     public ParserConfig getConfiguration() {
         return config;
+    }
+
+    private void clear() {
+        stack.clear();
+        queue.clear();
     }
 }

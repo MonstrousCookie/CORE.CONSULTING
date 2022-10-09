@@ -16,15 +16,13 @@ public class CalculatorImpl implements Calculator {
     @Override
     public double calculate(String infix) {
         double result = 0.0;
-        String postFixExpression = parser.parse(infix);
-        String[] infixTokens = postFixExpression.split(" ");
-        for (String token : infixTokens) {
+        String postfix = parser.parse(infix);
+        String[] postfixTokens = postfix.split(" ");
+        for (String token : postfixTokens) {
             if (NumberUtils.isCreatable(token)) {
                 tokens.push(token);
             }
-            if (parser.getConfiguration().getOperators().keySet()
-                    .stream()
-                    .anyMatch(s -> s.getOperator().equals(token))) {
+            if (parser.getConfiguration().isSupport(token)) {
                 double d = Double.parseDouble(tokens.pop());
                 result = parser.getConfiguration().getFunctionByToken(token).apply(Double.parseDouble(tokens.pop()), d);
                 tokens.push(String.valueOf(result));

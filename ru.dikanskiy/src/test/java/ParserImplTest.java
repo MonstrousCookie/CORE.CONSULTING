@@ -56,4 +56,9 @@ public class ParserImplTest {
 
         Assertions.assertEquals(postfixExpression, result);
     }
+
+    @Test
+    void parse_unsupportedOperation_failure() {
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> parser.parse("2 + 5 % 3"));
+    }
 }

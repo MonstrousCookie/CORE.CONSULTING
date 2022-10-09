@@ -2,6 +2,7 @@ package ru.dikanskiy.services.configuration;
 
 import ru.dikanskiy.entities.Operator;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiFunction;
@@ -29,14 +30,16 @@ import java.util.function.BiFunction;
  * @version 1.0
  */
 public class ParserConfig {
-    private Map<Operator, BiFunction<Double, Double, Double>> _operators = Map.of(
-            new Operator(1, "+"), (x, y) -> x + y,
-            new Operator(1, "-"), (x, y) -> x - y,
-            new Operator(2, "*"), (x, y) -> x * y,
-            new Operator(2, "/"), (x, y) -> x / y,
-            new Operator(1, "("), (x, y) -> null,
-            new Operator(1, ")"), (x, y) -> null
-    );
+    private Map<Operator, BiFunction<Double, Double, Double>> _operators = new HashMap<>();
+
+    {
+        _operators.put(new Operator(1, "+"), (x, y) -> x + y);
+        _operators.put(new Operator(1, "-"), (x, y) -> x - y);
+        _operators.put(new Operator(2, "*"), (x, y) -> x * y);
+        _operators.put(new Operator(2, "/"), (x, y) -> x / y);
+        _operators.put(new Operator(1, "("), (x, y) -> null);
+        _operators.put(new Operator(1, ")"), (x, y) -> null);
+    }
 
     public Map<Operator, BiFunction<Double, Double, Double>> getOperators() {
         return _operators;
