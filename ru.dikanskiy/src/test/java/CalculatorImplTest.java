@@ -48,5 +48,4 @@ public class CalculatorImplTest {
     void calculate_success6() {
         Assertions.assertEquals(34.0, calculator.calculate("5 * ( 4 + 3 ) - 1"));
     }
-
 }
