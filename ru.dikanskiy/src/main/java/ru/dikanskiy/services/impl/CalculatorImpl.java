@@ -21,8 +21,7 @@ public class CalculatorImpl implements Calculator {
         for (String token : postfixTokens) {
             if (NumberUtils.isCreatable(token)) {
                 tokens.push(token);
-            }
-            if (parser.getConfiguration().isSupport(token)) {
+            } else {
                 double d = Double.parseDouble(tokens.pop());
                 result = parser.getConfiguration().getFunctionByToken(token).apply(Double.parseDouble(tokens.pop()), d);
                 tokens.push(String.valueOf(result));

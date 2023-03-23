@@ -38,8 +38,8 @@ public class ParserImpl implements Parser {
                     stack.pop();
                     continue;
                 }
-                if (!stack.empty() && config.getOperatorByToken(token).getPriority() < stack.peek().getPriority()) {
-                    while (!stack.empty()) {
+                if (!stack.empty() && config.getOperatorByToken(token).getPriority() <= stack.peek().getPriority()) {
+                    while (!stack.empty() && config.getOperatorByToken(token).getPriority() <= stack.peek().getPriority()) {
                         queue.add(stack.pop().getOperator());
                     }
                     stack.push(config.getOperatorByToken(token));

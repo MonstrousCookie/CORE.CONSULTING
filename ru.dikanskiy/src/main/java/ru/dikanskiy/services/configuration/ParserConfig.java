@@ -33,10 +33,10 @@ public class ParserConfig {
     private Map<Operator, BiFunction<Double, Double, Double>> _operators = new HashMap<>();
 
     {
-        _operators.put(new Operator(1, "+"), (x, y) -> x + y);
-        _operators.put(new Operator(1, "-"), (x, y) -> x - y);
-        _operators.put(new Operator(2, "*"), (x, y) -> x * y);
-        _operators.put(new Operator(2, "/"), (x, y) -> x / y);
+        _operators.put(new Operator(2, "+"), (x, y) -> x + y);
+        _operators.put(new Operator(2, "-"), (x, y) -> x - y);
+        _operators.put(new Operator(3, "*"), (x, y) -> x * y);
+        _operators.put(new Operator(3, "/"), (x, y) -> x / y);
         _operators.put(new Operator(1, "("), (x, y) -> null);
         _operators.put(new Operator(1, ")"), (x, y) -> null);
     }

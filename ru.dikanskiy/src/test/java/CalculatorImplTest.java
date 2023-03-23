@@ -1,7 +1,5 @@
 import org.junit.jupiter.api.Assertions;
-
 import org.junit.jupiter.api.Test;
-
 import org.mockito.Mockito;
 import ru.dikanskiy.entities.Operator;
 import ru.dikanskiy.services.configuration.ParserConfig;
@@ -37,6 +35,7 @@ public class CalculatorImplTest {
         Assertions.assertEquals(43.0, calculator.calculate("( 10 + 1 ) * 5.0 - 12 "));
     }
 
+
     @Test
     void calculate_success5() {
         Assertions.assertEquals(22.0, calculator.calculate("5 * 4 + 3 - 1"));
@@ -55,6 +54,11 @@ public class CalculatorImplTest {
     @Test
     void calculate_unsupportedOperation_failure() {
         Assertions.assertThrows(UnsupportedOperationException.class, () -> calculator.calculate("2 * 5 % 4"));
+    }
+
+    @Test
+    void calculate_success8() {
+        Assertions.assertEquals(1682, calculator.calculate("5 * 4 + 3 - 1 + 5 + 3 * 2 * 4 + 4 + 4 * 34 * 3 * 4 - 1 * 3 - 2"));
     }
 
     @Test
