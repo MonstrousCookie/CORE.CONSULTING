@@ -43,7 +43,7 @@ public class ParserImplTest {
 
     @Test
     void parse_success5() {
-        final String postfixExpression = "5 4 * 3 1 - +";
+        final String postfixExpression = "5 4 * 3 + 1 -";
         String result = parser.parse("5 * 4 + 3 - 1");
 
         Assertions.assertEquals(postfixExpression, result);
